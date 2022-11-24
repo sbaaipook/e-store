@@ -1,0 +1,13 @@
+{
+  "catigories":[
+    {"id":1,"title":"fruits"},
+    {"id":2,"title":"vegetbales"},
+    {"id":3,"title":"dry fruits"}
+  ],
+  "products":[
+    {"id":1,"idcat":1,"nom":"Avocado"},
+    {"id":2,"idcat":1,"nom":"banana"},
+    {"id":3,"idcat":2,"nom":"carroto"},
+    {"id":5,"idcat":2,"nom":"uonion"}
+  ]
+}
