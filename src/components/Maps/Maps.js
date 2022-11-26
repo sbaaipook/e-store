@@ -22,7 +22,7 @@ const Maps =()=>{
   })
   
   const [map, setMap] = useState(null)
-  console.log(map)
+  
   const onLoad = useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -30,7 +30,7 @@ const Maps =()=>{
 
     setMap(map)
   }, [])
-
+  console.log(map)
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, [])

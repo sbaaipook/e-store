@@ -7,5 +7,40 @@
 }
 .product-shop {
   width: 100%;
-  
+   
+}
+.product-shop-image {
+  width: 150px;
+}
+.shop-content {
+  display: flex;
+  padding: 5px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  width: min-content;
+  margin-bottom: 5px;
+}
+.add-one,.remove-one{
+  background: none;
+  cursor: pointer;
+  transition: .2s ease;
+  border: none;
+  padding:0 10px;
+}
+.add-one {
+  border-left: 1px solid #444;
+}
+.remove-one {
+  border-right: 1px solid #444;
+}
+.count-product {
+  padding: 0 10px;
+}
+.add-one:hover{
+  background: #3498DB;
+  color: #fff;
+}
+.remove-one:hover {
+  background: #FF5733;
+  color: #fff;
 }

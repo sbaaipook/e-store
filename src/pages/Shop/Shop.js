@@ -1,6 +1,8 @@
 import "./Shop.css"
 import { useState } from "react"
-const Shop =({ products })=>{
+
+const Shop =({ products, onDeleteClicked })=>{
+
   const [count,setCount] = useState(1);
   const handleAddOne=()=>{
     setCount(count + 1)
@@ -20,9 +22,9 @@ const Shop =({ products })=>{
           <img src={product.image} className="product-shop-image" alt=""/>
           <h2 className="product-shop-title">{product.title}</h2>
           <div className="shop-content">
-            <button className="add-one" onClick={handleAddOne}>+</button>
-            <span className="count-product">{count}</span>
             <button className="remove-one" onClick={handleRemoveOne}>-</button>
+            <span className="count-product">{count}</span>
+            <button className="add-one" onClick={handleAddOne}>+</button>
           </div>
           <div className="del-btn">
             <button onClick={()=>onDeleteClicked(product.id)}>Delete</button>

@@ -3,17 +3,21 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "./App.css"
 import { fetcher } from "../../helpers/fetcher";
-import Maps from "../../components/Maps/Maps";
-import Product from "../../components/Product/Product";
-import Products from "../../components/Products/Products";
-import Section from "../Section/Section";
 import Header from "../../commons/Header/Header";
 import useLocalStorage from "../../hooks/useLocalStorage"
+import Home from "../../pages/Home/Home";
+import Shop from "../../pages/Shop/Shop"
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route
+} 
+from "react-router-dom"
 
 const App =()=>{
   const [products,setProducts] = useState([]);
   const [proShop, setProShop] = useLocalStorage("proShop",[]);
-  const [notify,setNotify] = useState([]); 
+  const [notify,setNotify] = useLocalStorage("notify",[]); 
 
   useEffect(()=>{
         const fetchData = async ()=>{
@@ -61,33 +65,13 @@ const App =()=>{
 
   return(
     <div className="app">
-      {/*Header components */}
-      <Header proShop={proShop} notify={notify} />
-      
-      {/* Slider */}
-
-      {/* Products  components */}
-
-      <Section title={"Products"}>
-        <Products> 
-          {products && products.map(product=>
-            <Product 
-              key={product.id} 
-              id={product.id} 
-              title={product.title}
-              image={product.image}
-              price={product.price}
-              onImageClicked={()=>handlImageClick(product.id)}
-              onAddClicked={()=>handleAddClick(product.id)}
-              /> 
-            )
-          }
-        </Products>
-      </Section>
-      
-      {/* Maps */}
-      <Maps />
-
+      <Router>
+        <Header proShop={proShop} notify={notify} />
+        <Routes>
+          <Route path="/" element={<Home products={products} addClick={handleAddClick} imageClick={handlImageClick} />}/>
+          <Route path={"/cart"} element={<Shop products={proShop} onDeleteClicked={()=>console.log("well")}/>} />
+        </Routes>
+      </Router>
     </div>
   )
 }
