@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import "./App.css"
@@ -14,7 +14,10 @@ import {
 } 
 from "react-router-dom"
 
+
+export const ProShopContext = createContext()
 const App =()=>{
+
   const [products,setProducts] = useState([]);
   const [proShop, setProShop] = useLocalStorage("proShop",[]);
   const [notify,setNotify] = useLocalStorage("notify",[]); 
@@ -69,7 +72,13 @@ const App =()=>{
         <Header proShop={proShop} notify={notify} />
         <Routes>
           <Route path="/" element={<Home products={products} addClick={handleAddClick} imageClick={handlImageClick} />}/>
-          <Route path={"/cart"} element={<Shop products={proShop} onDeleteClicked={()=>console.log("well")}/>} />
+          <Route 
+            path={"/cart"} 
+            element={
+            <ProShopContext.Provider value={proShop}>
+              <Shop onDeleteClicked={()=>console.log("well")} />
+            </ProShopContext.Provider>  
+          }/>
         </Routes>
       </Router>
     </div>

@@ -3,16 +3,12 @@ import { useState } from "react";
 
 
 
-const slides = [
-  {url:'https://images.app.goo.gl/9CvtHe2mdBLmRNZy9',title:"p1"}, 
-  {url:'https://images.app.goo.gl/1cxY8vbat7wuzNDC7',title:'p2'},
-  {url:'https://images.app.goo.gl/vPNhPpoxmU4YvxnN6',title:'p3'}
-]
 
 
 
 
-const Slider = () => {
+
+const Slider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;

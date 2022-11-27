@@ -5,10 +5,16 @@ import Maps from "../../components/Maps"
 import Slider from "../../components/Slider/Slider"
 import "./Home.css"
 
+const slides = [
+  {url:'http://localhost:3000/image-1.jpg',title:"p1"}, 
+  {url:'http://localhost:3000/image-2.jpg',title:'p2'},
+  {url:'http://localhost:3000/image-3.jpg',title:'p3'}
+]
+
 const Home =({ addClick, imageClick, products})=>{
   return(
     <div className="home">
-      <Slider/>
+      <Slider slides={slides} />
       <Section title={"Products"}>
         <Products> 
           {products && products.map(product=>
